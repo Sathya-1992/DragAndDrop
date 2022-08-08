@@ -1,23 +1,23 @@
-var startX = 0;
-var startY = 0;
-var endX = 0;
-var endY = 0;
-var leftMouse = 0;
-var topMouse = 0;
-var rightMouse = 0;
-var bottomMouse = 0;
+var startXValue = 0;
+var startYValue = 0;
+var endXValue = 0;
+var endYValue = 0;
+var leftMouseValue = 0;
+var topMouseValue = 0;
+var rightMouseValue = 0;
+var bottomMouseValue = 0;
 var box = document.getElementById("box");
 var container = document.getElementById("container");
 
 window.onload = function(){
     box.addEventListener("mousedown",function(event){
-        startX = event.clientX;
-        startY = event.clientY;
+        startXValue = event.clientX;
+        startYValue = event.clientY;
 
-        leftMouse = container.getBoundingClientRect().x;
-        rightMouse = container.getBoundingClientRect().x+container.getBoundingClientRect().width - (box.offsetWidth/2);
-        topMouse =container.getBoundingClientRect().y;
-        bottomMouse = container.getBoundingClientRect().y+container.getBoundingClientRect().height - (box.offsetHeight/2);
+        leftMouseValue = container.getBoundingClientRect().x;
+        rightMouseValue = container.getBoundingClientRect().x+container.getBoundingClientRect().width - (box.offsetWidth/2);
+        topMouseValue =container.getBoundingClientRect().y;
+        bottomMouseValue = container.getBoundingClientRect().y+container.getBoundingClientRect().height - (box.offsetHeight/2);
 
         container.addEventListener("mousemove",dragBox);
         container.addEventListener("mouseup",stopDrag);
@@ -27,32 +27,32 @@ window.onload = function(){
 
 function dragBox(event){
     
-    if(event.clientX >= leftMouse && event.clientY >= topMouse && event.clientX<=rightMouse && event.clientY <= bottomMouse){
-        box.style.left = `${endX + (event.clientX - startX)}px`;
-        box.style.top = `${endY + (event.clientY - startY)}px`;
+    if(event.clientX >= leftMouseValue && event.clientY >= topMouseValue && event.clientX<=rightMouseValue && event.clientY <= bottomMouseValue){
+        box.style.left = `${endXValue + (event.clientX - startXValue)}px`;
+        box.style.top = `${endYValue + (event.clientY - startYValue)}px`;
     }
-    else if(event.clientX <= leftMouse && event.clientY >= topMouse && event.clientY <= bottomMouse){
+    else if(event.clientX <= leftMouseValue && event.clientY >= topMouseValue && event.clientY <= bottomMouseValue){
         box.style.left = "0px";
-        box.style.top = `${endY + (event.clientY - startY)}px`
+        box.style.top = `${endYValue + (event.clientY - startYValue)}px`;
     }
-    else if(event.clientX >= rightMouse && event.clientY >= topMouse && event.clientY <= bottomMouse){
+    else if(event.clientX >= rightMouseValue && event.clientY >= topMouseValue && event.clientY <= bottomMouseValue){
         box.style.right = "0px";
-        box.style.top = `${endY + (event.clientY - startY)}px`
+        box.style.top = `${endYValue + (event.clientY - startYValue)}px`;
     }
-    else if(event.clientY <= topMouse && event.clientX >= leftMouse && event.clientX<=rightMouse){
+    else if(event.clientY <= topMouseValue && event.clientX >= leftMouseValue && event.clientX<=rightMouseValue){
         box.style.top = "0px";
-        box.style.left = `${endX + (event.clientX - startX)}px`
+        box.style.left = `${endXValue + (event.clientX - startXValue)}px`;
     }
-    else if(event.clientY >=bottomMouse && event.clientX >= leftMouse && event.clientX<=rightMouse){
+    else if(event.clientY >=bottomMouseValue && event.clientX >= leftMouseValue && event.clientX<=rightMouseValue){
         box.style.bottom = "0px";
-        box.style.left = `${endX + (event.clientX - startX)}px`
+        box.style.left = `${endXValue + (event.clientX - startXValue)}px`;
     }
 
 }
 
 function stopDrag(){
     container.removeEventListener("mousemove",dragBox);
-    endX = box.offsetLeft;
-    endY = box.offsetTop;
+    endXValue = box.offsetLeft;
+    endYValue = box.offsetTop;
 }
 
