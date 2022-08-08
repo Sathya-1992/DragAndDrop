@@ -11,8 +11,9 @@ var container = document.getElementById("container");
 
 window.onload = function(){
     box.addEventListener("mousedown",function(event){
-        startXValue = event.clientX;
-        startYValue = event.clientY;
+    
+        startXValue = event.target.getBoundingClientRect().x + (box.offsetWidth/2);
+        startYValue = event.target.getBoundingClientRect().y + (box.offsetHeight/2);
 
         leftMouseValue = container.getBoundingClientRect().x;
         rightMouseValue = container.getBoundingClientRect().x+container.getBoundingClientRect().width - (box.offsetWidth/2);
