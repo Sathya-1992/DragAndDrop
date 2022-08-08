@@ -17,7 +17,7 @@ window.onload = function(){
 
         leftMouseValue = container.getBoundingClientRect().x;
         rightMouseValue = container.getBoundingClientRect().x+container.getBoundingClientRect().width - (box.offsetWidth/2);
-        topMouseValue =container.getBoundingClientRect().y;
+        topMouseValue = container.getBoundingClientRect().y;
         bottomMouseValue = container.getBoundingClientRect().y+container.getBoundingClientRect().height - (box.offsetHeight/2);
 
         container.addEventListener("mousemove",dragBox);
