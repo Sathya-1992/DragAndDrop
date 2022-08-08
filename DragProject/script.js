@@ -11,14 +11,18 @@ var container = document.getElementById("container");
 
 window.onload = function(){
     box.addEventListener("mousedown",function(event){
-    
-        startXValue = event.target.getBoundingClientRect().x + (box.offsetWidth/2);
-        startYValue = event.target.getBoundingClientRect().y + (box.offsetHeight/2);
+        var boxCoord = event.target.getBoundingClientRect();
+        var containerCoord = container.getBoundingClientRect();
+        var boxMidWidth = box.offsetWidth/2;
+        var boxMidHeight = box.offsetHeight/2;
 
-        leftMouseValue = container.getBoundingClientRect().x + (box.offsetWidth/2);
-        rightMouseValue = container.getBoundingClientRect().x+container.getBoundingClientRect().width - (box.offsetWidth/2);
-        topMouseValue = container.getBoundingClientRect().y + (box.offsetHeight/2);
-        bottomMouseValue = container.getBoundingClientRect().y+container.getBoundingClientRect().height - (box.offsetHeight/2);
+        startXValue = boxCoord.x + boxMidWidth;
+        startYValue = boxCoord.y + boxMidHeight;
+
+        leftMouseValue = containerCoord.x + boxMidWidth;
+        rightMouseValue = containerCoord.x+containerCoord.width - boxMidWidth;
+        topMouseValue = containerCoord.y + boxMidHeight;
+        bottomMouseValue = containerCoord.y+containerCoord.height - boxMidHeight;
 
         container.addEventListener("mousemove",dragBox);
         container.addEventListener("mouseup",stopDrag);
