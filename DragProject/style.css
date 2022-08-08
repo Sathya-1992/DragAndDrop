@@ -10,12 +10,16 @@ body{
     width: 100vw;
     height: 100vh;
     padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 #container{
     width: 80rem;
     height: 80rem;
     background-color: rgb(235, 231, 231);
     position: relative;
+    border: 1px solid;
 }
 #box{
     width: 3rem;
